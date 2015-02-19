@@ -1,0 +1,29 @@
+<VIRTUALHOST *:80>
+    ServerAdmin webmaster@localhost
+    ServerName DOMAIN_SKEL
+    DocumentRoot WB_ROOT_SKEL
+    <DIRECTORY />
+        Options FollowSymLinks
+        AllowOverride None
+        Require all denied
+    </DIRECTORY>
+    <DIRECTORY WB_ROOT_SKEL/>
+        Options +FollowSymLinks
+        # <IfModule mod_rewrite.c>
+        # RewriteEngine On
+        # RewriteBase /
+        # RewriteCond %{REQUEST_FILENAME} -f [OR]
+        # RewriteCond %{REQUEST_FILENAME} -d
+        # RewriteRule ^.*$ - [S=40]
+        # RewriteRule (.*)/(.*)/$ /index.php?page=$1&id=$2 [QSA,L]
+        # RewriteRule (.*)/$ /index.php?page=$1 [QSA,L]
+        # </IfModule>
+        # php_value auto_prepend_file /var/www/DOMAIN_SKEL/prepend.php
+        Require all granted
+    </DIRECTORY>
+    ErrorLog ${APACHE_LOG_DIR}/DOMAIN_SKEL_error.log
+    # Possible values include: debug, info, notice, warn, error, crit,
+    # alert, emerg.
+    LogLevel warn
+    CustomLog ${APACHE_LOG_DIR}/DOMAIN_SKEL_access.log combined
+</VIRTUALHOST>
